@@ -1,0 +1,44 @@
+.users-list-container {
+    padding-top: 2rem;
+}
+
+.card_test {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Pagination Styling */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 3rem;
+    gap: 15px;
+}
+
+.page-btn {
+    background-color: #630e85;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.page-btn:hover {
+    background-color: #8b14ba;
+}
+
+.page-btn.active {
+    background-color: #9f82ab;
+    font-weight: bold;
+}
+
+.page-btn.disabled {
+    background-color: #9f82ab;
+    cursor: not-allowed;
+}

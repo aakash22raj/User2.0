@@ -1,0 +1,103 @@
+.card_test{
+    display: flex;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 40px;
+    justify-content: center;
+    padding-bottom: 1rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.test{
+    width: 100%;
+    max-width: 350px;
+    min-width: 300px;
+    border: 1px solid #cce7d0;
+    border-radius: 20px;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
+    padding-bottom: 1.3rem;
+    padding-top: .5rem;
+    transition: 0.2s ease;
+    text-align: center;
+    background: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.test:hover{
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
+}
+
+.test img{
+    height: 140px;
+    width: 140px;
+    margin-top: 1rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #630e85;
+}
+
+.test h5{
+    margin-top: 15px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+
+
+.card-buttons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 15px;
+    border-radius: 20px;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.test:hover .card-buttons {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+.card-buttons button {
+    border: 2px solid #630e85;
+    color: #630e85;
+    padding: 8px 25px;
+    font-size: 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover Effects */
+.card-buttons button:hover {
+    background-color: #630e85;
+    color: white;
+    transform: translateY(-2px);
+}
+  
+
+
+@media (max-width: 768px) {
+    .card_test {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+
+@media (max-width: 480px) {
+    .card_test {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
