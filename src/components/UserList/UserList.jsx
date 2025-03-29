@@ -4,7 +4,7 @@ import axios from 'axios';
 import UserCard from '../UserCard/UserCard';
 
 
-const UserList = () => {
+const UserList = ({ searchQuery }) => {
 
     const [users, setUsers] = useState([]);
     const [page, setPage] = useState(1);
@@ -25,7 +25,7 @@ const UserList = () => {
                     // Filter out deleted users
                     let filteredUsers = response.data.data.filter(user => !storedDeletedUsers.includes(user.id));
                     // Merge edited users with fetched data
-                    filteredUsers = filteredUsers.map(user => storedEditedUsers[user.id] || user);
+                    filteredUsers = filteredUsers.map(user => storedEditedUsers[user.id] ? storedEditedUsers[user.id] : user);
                     setUsers(filteredUsers);
 
 
@@ -42,6 +42,14 @@ const UserList = () => {
         };
         fetchUsers();
     }, [page]);
+
+
+    // **Filter users based on search query**
+    const filteredUsers = users.filter(user =>
+        user.first_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        user.last_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        user.email.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
 
 
@@ -86,11 +94,15 @@ const UserList = () => {
         {/* <h2 className=''>Users List</h2> */}
         {loading ? (
             <p>Loading users...</p>
-            ) : (
+        ) : (
             <div className="card_test">
-                {users.map((user) => (
-                    <UserCard key={user.id} user={user} handleUserDelete={handleUserDelete} handleUserUpdate={handleUserUpdate} />
-                ))}
+                {filteredUsers.length > 0 ? (
+                    filteredUsers.map(user => (
+                        <UserCard key={user.id} user={user} handleUserDelete={handleUserDelete} handleUserUpdate={handleUserUpdate} />
+                    ))
+                ) : (
+                    <p>No users found</p>
+                )}
             </div>
         )}
 
